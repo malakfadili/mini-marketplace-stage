@@ -1,0 +1,5 @@
+<div class="container">
+    <div class="row row-cols-4">
+        <app-product *ngFor="let productVar of ProductArray; let i = index" [product]="productVar" [prd_idx]="i+1"></app-product>
+    </div>
+</div>

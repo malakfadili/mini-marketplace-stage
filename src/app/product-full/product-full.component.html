@@ -1,0 +1,17 @@
+<div class="card" style="width: 18rem;"> 
+    <img src={{product.img}} width="50" height="60" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title" [ngClass]="{'fontColor size20 backgroundColor' : product.title.includes('C')}">Title : {{product.title}}</h5>
+      <p class="card-text">Description : {{product.description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngIf="product.price>0 else blockGratuit">Price : {{product.price}} $ </li>
+      <ng-template #blockGratuit><li class="list-group-item" >Price : Gratuit </li></ng-template>
+     
+      <li class="list-group-item">Company :  {{product.company}}</li>
+      
+    </ul>
+    <p class="card-text"><small class="text-muted">Likes: {{product.likes}}</small></p>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example"></div>   
+</div>
+  

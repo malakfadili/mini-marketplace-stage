@@ -1,0 +1,33 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+        Product: {{prd_idx}}
+    </div>
+    <img src={{product.img}} class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Title: {{product.title}}</h5>
+        <p class="card-text">Description: {{product.description | uppercase}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" [ngStyle]="{'background': product.price<760 ? 'red' : ''}" *ngIf="product.price > 0, else freeBlock">Price: {{product.price}} $</li>
+        <ng-template #freeBlock><li class="list-group-item">Price: Free</li></ng-template>
+        <li class="list-group-item">Company: {{product.company}}</li>
+        <p class="card-text"><small class="text-muted">Likes: {{product.likes}}</small></p>
+        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary btn-sm" (click)="product.likes = product.likes + 1">Like</button>
+            <button type="button" class="btn btn-secondary btn-sm" (click)="decrement($event)">Dislike</button>
+        </div>
+    </ul>
+    <br>
+    <div class="input-group mb-3">
+        <label>Quantity : </label>
+        <br>
+        <input [(ngModel)]="product.quantity" name="quantity" type="number" placeholder="0" style="text-align: center">
+        <div class="input-group-prepend">
+            <button class="btn btn-primary" type="button" (click)="product.quantity =product.quantity + 1">+</button>
+        </div>
+        <div class="input-group-prepend">
+            <button class="btn btn-secondary"  type="button" (click)="decrementQuantity(this.product.quantity)">-</button>
+        </div>
+    </div>
+    
+</div>
